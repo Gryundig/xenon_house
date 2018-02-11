@@ -13,21 +13,21 @@ logger = logging.getLogger(__name__)
 class XenonHouse:
     def __init__(self):
         logger.info('XenonHouse initialization')
-        self._register_event_targets()
-        self._subscribe_to_events()
-        self._begin()
+        self.__register_event_targets()
+        self.__subscribe_to_events()
+        self.__begin()
 
     @staticmethod
-    def _register_event_targets():
+    def __register_event_targets():
         logger.info('Registration of event targets') 
         EventsHandler().register_event_target(MotionEventTarget())
 
     @staticmethod
-    def _subscribe_to_events():
+    def __subscribe_to_events():
         EventsHandler().add_event_listener(MOTION_CHANGED_EVENT, Logger())
 
     @staticmethod
-    def _begin():
+    def __begin():
         EventsHandler().begin()
 
     @staticmethod

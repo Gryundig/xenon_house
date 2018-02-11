@@ -11,11 +11,9 @@ logger = logging.getLogger(__name__)
 
 
 class MotionSensor(Sensor):
-    def __init__(self):
+    def __init__(self, callback):
         self._pin = config.MOTION_SENSOR_PIN
+        self._callback = callback
 
     def begin(self):
-        pass
-
-    def get_motion(self):
-        pass
+        self._callback(True)

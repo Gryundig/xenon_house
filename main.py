@@ -9,7 +9,7 @@ from xenon.house import XenonHouse
 
 logging.basicConfig(
     level=logging.NOTSET,
-    format='%(asctime)s %(levelname)-8s %(name)-30s %(message)s')
+    format=const.LOGGING_FORMAT)
 
 logger = logging.getLogger(__name__)
 

@@ -21,17 +21,17 @@ class EventTarget:
         else:
             self._listener_map[event_type].append(event_listener)
 
-    def dispatch_event(self, event):
+    def _dispatch_event(self, event):
         if event.get_type() in self._listener_map:
             event_listeners = self._listener_map[event.get_type()]
             for eventListener in event_listeners:
                 eventListener.handle_event(event)
 
     def get_type(self):
-        pass
+        raise NotImplementedError
 
     def begin(self):
-        logger.info('Begin of event target')
+        pass
 
     def loop(self):
         pass

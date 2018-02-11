@@ -3,7 +3,11 @@
 #
 #  logger.py
 
+import logging
 from events.ieventlistener import IEventListener
+from motion.motionevent import MOTION_CHANGED_EVENT
+
+logger = logging.getLogger(__name__)
 
 
 class Logger(IEventListener):
@@ -11,4 +15,8 @@ class Logger(IEventListener):
         pass
 
     def handle_event(self, event):
-        pass
+        event_type = event.get_type()
+        if event_type == MOTION_CHANGED_EVENT:
+            logger.info("Motion - " + str(event.get_motion()))
+        else:
+            logger.debug("Unknown event type ")

@@ -14,9 +14,3 @@ class Sensor:
 
     def begin(self):
         pass
-
-    def read(self):
-        pass
-
-    def set_pin_mode(self):
-        pass
