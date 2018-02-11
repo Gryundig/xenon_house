@@ -6,7 +6,10 @@
 
 class Sensor:
     def __init__(self, pin):
-        self._pin = pin
+        self.__pin = pin
 
     def begin(self):
         pass
+
+    def get_pin(self):
+        return self.__pin

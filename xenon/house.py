@@ -32,4 +32,3 @@ class XenonHouse:
     @staticmethod
     def loop():
         EventsHandler().loop()
-        logger.info('loop')
