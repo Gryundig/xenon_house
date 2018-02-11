@@ -16,6 +16,8 @@ logger = logging.getLogger(__name__)
 
 def main(args):
     try:
+        if len(args) > 0:
+            raise Exception("Invalid arguments passed")
         xenon_house = XenonHouse()
         while True:
             xenon_house.loop()
