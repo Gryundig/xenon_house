@@ -7,12 +7,13 @@ import uuid
 
 UNKNOWN_EVENT = uuid.uuid4()
 
-class Event():
+
+class Event:
     def __init__(self):
         self._type = UNKNOWN_EVENT
 
-    def getType(self):
+    def get_type(self):
         return self._type
 
-    def setType(self, type):
-        self._type = type
+    def set_type(self, event_type):
+        self._type = event_type

@@ -14,8 +14,8 @@ class MotionSensor(Sensor):
     def __init__(self):
         self._pin = config.MOTION_SENSOR_PIN
 
-    def begin():
+    def begin(self):
         pass
 
-    def getMotion():
+    def get_motion(self):
         pass

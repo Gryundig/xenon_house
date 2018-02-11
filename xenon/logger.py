@@ -10,5 +10,5 @@ class Logger(IEventListener):
     def __init__(self):
         pass
 
-    def handleEvent(self, event):
+    def handle_event(self, event):
         pass

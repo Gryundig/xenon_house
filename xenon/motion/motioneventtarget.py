@@ -6,7 +6,6 @@
 import logging
 import uuid
 from ..events.eventtarget import EventTarget
-from motionevent import MotionEvent
 from motionsensor import MotionSensor
 
 logger = logging.getLogger(__name__)
@@ -18,9 +17,9 @@ class MotionEventTarget(EventTarget):
     def __init__(self):
         EventTarget.__init__(self)
         self._type = MOTION_EVENT_TARGET
-        self._motionSensor = MotionSensor()
+        self._motion_sensor = MotionSensor()
 
-    def getType(self):
+    def get_type(self):
         return self._type
 
     def begin(self):

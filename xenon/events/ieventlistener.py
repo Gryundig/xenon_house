@@ -6,9 +6,9 @@
 from abc import ABCMeta, abstractmethod
 
 
-class IEventListener():
+class IEventListener:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def handleEvent(self, event):
+    def handle_event(self, event):
         raise NotImplementedError

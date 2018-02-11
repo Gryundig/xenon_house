@@ -8,15 +8,15 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class Sensor():
+class Sensor:
     def __init__(self):
         pass
 
-    def begin():
+    def begin(self):
         pass
 
-    def read():
+    def read(self):
         pass
 
-    def setPinMode():
+    def set_pin_mode(self):
         pass

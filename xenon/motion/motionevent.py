@@ -14,5 +14,5 @@ class MotionEvent(Event):
         self._type = MOTION_CHANGED_EVENT
         self._motion = motion
 
-    def getMotion(self):
+    def get_motion(self):
         return self._motion
