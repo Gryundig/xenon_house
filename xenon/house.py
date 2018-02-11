@@ -5,7 +5,7 @@ import logging
 from eventshandler import EventsHandler
 from logger import Logger
 from motion.motioneventtarget import MotionEventTarget
-from motion.motionevent import MOTION_CHANGED_EVENT
+from motion.motionevent import MOTION_CHANGED_EVENT_ID
 
 logger = logging.getLogger(__name__)
 
@@ -19,12 +19,11 @@ class XenonHouse:
 
     @staticmethod
     def __register_event_targets():
-        logger.info('Registration of event targets') 
         EventsHandler().register_event_target(MotionEventTarget())
 
     @staticmethod
     def __subscribe_to_events():
-        EventsHandler().add_event_listener(MOTION_CHANGED_EVENT, Logger())
+        EventsHandler().add_event_listener(MOTION_CHANGED_EVENT_ID, Logger())
 
     @staticmethod
     def __begin():

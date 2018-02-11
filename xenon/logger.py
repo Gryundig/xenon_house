@@ -5,7 +5,7 @@
 
 import logging
 from events.ieventlistener import IEventListener
-from motion.motionevent import MOTION_CHANGED_EVENT
+from motion.motionevent import MOTION_CHANGED_EVENT_ID
 
 logger = logging.getLogger(__name__)
 
@@ -15,8 +15,8 @@ class Logger(IEventListener):
         pass
 
     def handle_event(self, event):
-        event_type = event.get_type()
-        if event_type == MOTION_CHANGED_EVENT:
+        event_id = event.get_id()
+        if event_id == MOTION_CHANGED_EVENT_ID:
             logger.info("Motion - " + str(event.get_motion()))
         else:
-            logger.debug("Unknown event type ")
+            logger.debug("Unknown event id")

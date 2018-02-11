@@ -3,14 +3,10 @@
 #
 #  sensor.py
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 class Sensor:
-    def __init__(self):
-        pass
+    def __init__(self, pin):
+        self._pin = pin
 
     def begin(self):
         pass

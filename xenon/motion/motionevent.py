@@ -6,13 +6,13 @@
 import uuid
 from ..events.event import Event
 
-MOTION_CHANGED_EVENT = uuid.uuid4()
+MOTION_CHANGED_EVENT_ID = uuid.uuid4()
 
 
 class MotionEvent(Event):
     def __init__(self, motion):
-        self._type = MOTION_CHANGED_EVENT
-        self._motion = motion
+        Event.__init__(self, MOTION_CHANGED_EVENT_ID)
+        self.__motion = motion
 
     def get_motion(self):
-        return self._motion
+        return self.__motion

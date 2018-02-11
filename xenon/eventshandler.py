@@ -4,9 +4,8 @@
 #  eventshandler.py
 
 import logging
-from events.eventtarget import UNKNOWN_EVENT_TARGET
-from motion.motioneventtarget import MOTION_EVENT_TARGET
-from motion.motionevent import MOTION_CHANGED_EVENT
+from motion.motioneventtarget import MOTION_EVENT_TARGET_ID
+from motion.motionevent import MOTION_CHANGED_EVENT_ID
 from singleton import Singleton
 
 logger = logging.getLogger(__name__)
@@ -16,26 +15,31 @@ class EventsHandler:
     __metaclass__ = Singleton
 
     def __init__(self):
-        self._event_target_map = {}
+        self.__event_target_map = {}
 
     def register_event_target(self, event_target):
-        self._event_target_map[event_target.get_type()] = event_target
+        event_target_id = event_target.get_id()
+        logger.info('Registration of event target: ' + str(event_target_id))
+        self.__event_target_map[event_target_id] = event_target
 
-    def add_event_listener(self, event_type, event_listener):
-        event_target_type = UNKNOWN_EVENT_TARGET
-        if event_type == MOTION_CHANGED_EVENT:
-            event_target_type = MOTION_EVENT_TARGET
-
-        if event_target_type != UNKNOWN_EVENT_TARGET:
-            self._event_target_map[event_target_type].add_event_listener(event_type, event_listener)
+    def add_event_listener(self, event_id, event_listener):
+        event_target_id = self.__get_event_target_id_by_event_id(event_id)
+        if event_target_id in self.__event_target_map:
+            self.__event_target_map[event_target_id].add_event_listener(event_id, event_listener)
         else:
-            logger.warn('Unknown event target type')
+            raise Exception("Event target " + str(event_target_id) + " is not registered")
+
+    @staticmethod
+    def __get_event_target_id_by_event_id(event_id):
+        if event_id == MOTION_CHANGED_EVENT_ID:
+            return MOTION_EVENT_TARGET_ID
+        else:
+            raise Exception("Unknown event id to convert to event target id")
 
     def begin(self):
-        logger.info('Begin of event handler')
-        for eventTargetType in self._event_target_map:
-            self._event_target_map[eventTargetType].begin()
+        for event_target_id in self.__event_target_map:
+            self.__event_target_map[event_target_id].begin()
 
     def loop(self):
-        for eventTargetType in self._event_target_map:
-            self._event_target_map[eventTargetType].loop()
+        for event_target_id in self.__event_target_map:
+            self.__event_target_map[event_target_id].loop()
