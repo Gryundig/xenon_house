@@ -6,6 +6,11 @@
 import logging
 from motion.motioneventtarget import MOTION_EVENT_TARGET_ID
 from motion.motionevent import MOTION_CHANGED_EVENT_ID
+from clock.clockeventtarget import CLOCK_EVENT_TARGET_ID
+from clock.dayevent import DAY_CHANGED_EVENT_ID
+from clock.hourevent import HOUR_CHANGED_EVENT_ID
+from clock.minuteevent import MINUTE_CHANGED_EVENT_ID
+from clock.secondevent import SECOND_CHANGED_EVENT_ID
 from singleton import Singleton
 
 logger = logging.getLogger(__name__)
@@ -33,6 +38,11 @@ class EventsHandler:
     def __get_event_target_id_by_event_id(event_id):
         if event_id == MOTION_CHANGED_EVENT_ID:
             return MOTION_EVENT_TARGET_ID
+        elif event_id == DAY_CHANGED_EVENT_ID or\
+            event_id == HOUR_CHANGED_EVENT_ID or\
+            event_id == MINUTE_CHANGED_EVENT_ID or\
+            event_id == SECOND_CHANGED_EVENT_ID:
+            return CLOCK_EVENT_TARGET_ID
         else:
             raise Exception("Unknown event id to convert to event target id")
 

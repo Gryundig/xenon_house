@@ -3,10 +3,6 @@
 #
 #  eventtarget.py
 
-import logging
-
-logger = logging.getLogger(__name__)
-
 
 class EventTarget:
     def __init__(self, event_target_id):

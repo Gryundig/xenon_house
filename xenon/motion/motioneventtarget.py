@@ -3,13 +3,10 @@
 #
 #  motioneventtarget.py
 
-import logging
 import uuid
 from ..events.eventtarget import EventTarget
 from motionevent import MotionEvent
 from motionsensor import MotionSensor
-
-logger = logging.getLogger(__name__)
 
 MOTION_EVENT_TARGET_ID = uuid.uuid4()
 

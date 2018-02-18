@@ -3,7 +3,9 @@
 
 import logging
 from eventshandler import EventsHandler
-from logger import Logger
+from monitor import Monitor
+from clock.clockeventtarget import ClockEventTarget
+from clock.secondevent import SECOND_CHANGED_EVENT_ID
 from motion.motioneventtarget import MotionEventTarget
 from motion.motionevent import MOTION_CHANGED_EVENT_ID
 
@@ -19,11 +21,16 @@ class XenonHouse:
 
     @staticmethod
     def __register_event_targets():
-        EventsHandler().register_event_target(MotionEventTarget())
+        events_handler = EventsHandler()
+        events_handler.register_event_target(MotionEventTarget())
+        events_handler.register_event_target(ClockEventTarget())
 
     @staticmethod
     def __subscribe_to_events():
-        EventsHandler().add_event_listener(MOTION_CHANGED_EVENT_ID, Logger())
+        monitor = Monitor()
+        events_handler = EventsHandler()
+        events_handler.add_event_listener(MOTION_CHANGED_EVENT_ID, monitor)
+        events_handler.add_event_listener(SECOND_CHANGED_EVENT_ID, monitor)
 
     @staticmethod
     def __begin():

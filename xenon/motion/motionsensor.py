@@ -3,12 +3,9 @@
 #
 #  motionsensor.py
 
-import logging
 import RPi.GPIO as GPIO
 from .. import config
 from ..sensor import Sensor
-
-logger = logging.getLogger(__name__)
 
 
 class MotionSensor(Sensor):
