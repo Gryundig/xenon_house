@@ -11,7 +11,7 @@ from clock.dayevent import DAY_CHANGED_EVENT_ID
 from clock.hourevent import HOUR_CHANGED_EVENT_ID
 from clock.minuteevent import MINUTE_CHANGED_EVENT_ID
 from clock.secondevent import SECOND_CHANGED_EVENT_ID
-from singleton import Singleton
+from utils.singleton import Singleton
 
 logger = logging.getLogger(__name__)
 

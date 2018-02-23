@@ -4,7 +4,9 @@
 import logging
 from eventshandler import EventsHandler
 from monitor import Monitor
+from ifttt import IFTTT
 from clock.clockeventtarget import ClockEventTarget
+from clock.minuteevent import MINUTE_CHANGED_EVENT_ID
 from clock.secondevent import SECOND_CHANGED_EVENT_ID
 from motion.motioneventtarget import MotionEventTarget
 from motion.motionevent import MOTION_CHANGED_EVENT_ID
@@ -31,6 +33,8 @@ class XenonHouse:
         events_handler = EventsHandler()
         events_handler.add_event_listener(MOTION_CHANGED_EVENT_ID, monitor)
         events_handler.add_event_listener(SECOND_CHANGED_EVENT_ID, monitor)
+        ifttt = IFTTT()
+        events_handler.add_event_listener(MINUTE_CHANGED_EVENT_ID, ifttt)
 
     @staticmethod
     def __begin():
