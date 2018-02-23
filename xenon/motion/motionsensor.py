@@ -23,3 +23,6 @@ class MotionSensor(Sensor):
             self.get_pin(),
             GPIO.BOTH,
             callback=self.moving_callback)
+
+    def end(self):
+        GPIO.cleanup(self.get_pin())

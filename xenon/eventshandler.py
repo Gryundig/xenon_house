@@ -4,13 +4,16 @@
 #  eventshandler.py
 
 import logging
-from motion.motioneventtarget import MOTION_EVENT_TARGET_ID
-from motion.motionevent import MOTION_CHANGED_EVENT_ID
 from clock.clockeventtarget import CLOCK_EVENT_TARGET_ID
 from clock.dayevent import DAY_CHANGED_EVENT_ID
 from clock.hourevent import HOUR_CHANGED_EVENT_ID
 from clock.minuteevent import MINUTE_CHANGED_EVENT_ID
 from clock.secondevent import SECOND_CHANGED_EVENT_ID
+from humiture.humitureeventtarget import HUMITURE_EVENT_TARGET_ID
+from humiture.humidityevent import HUMIDITY_CHANGED_EVENT_ID
+from humiture.temperatureevent import TEMPERATURE_CHANGED_EVENT_ID
+from motion.motioneventtarget import MOTION_EVENT_TARGET_ID
+from motion.motionevent import MOTION_CHANGED_EVENT_ID
 from utils.singleton import Singleton
 
 logger = logging.getLogger(__name__)
@@ -43,6 +46,9 @@ class EventsHandler:
             event_id == MINUTE_CHANGED_EVENT_ID or\
             event_id == SECOND_CHANGED_EVENT_ID:
             return CLOCK_EVENT_TARGET_ID
+        elif event_id == HUMIDITY_CHANGED_EVENT_ID or\
+            event_id == TEMPERATURE_CHANGED_EVENT_ID:
+            return HUMITURE_EVENT_TARGET_ID
         else:
             raise Exception("Unknown event id to convert to event target id")
 
@@ -53,3 +59,7 @@ class EventsHandler:
     def loop(self):
         for event_target_id in self.__event_target_map:
             self.__event_target_map[event_target_id].loop()
+            
+    def end(self):
+        for event_target_id in self.__event_target_map:
+            self.__event_target_map[event_target_id].end()
