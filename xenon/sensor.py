@@ -11,5 +11,8 @@ class Sensor:
     def begin(self):
         pass
 
+    def end(self):
+        pass
+
     def get_pin(self):
         return self.__pin

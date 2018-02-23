@@ -9,7 +9,7 @@
 #               GPIO3 SCL1  5|6         GND
 #               GPIO4       7|8         GPIO14 UART.TXD     <- MOTION_SENSOR_PIN
 #               GND         9|10        GPIO15 UART.RXD
-#               GPIO17      11|12       RXD
+#               GPIO17      11|12       GPIO18              <- DHT11_SENSOR_PIN
 #               GPIO27      13|14       GND
 #               GPIO22      15|16       GPIO23
 #               3.3v        17|18       GPIO24
@@ -26,3 +26,4 @@
 #               GND         39|40       GPIO21
 
 MOTION_SENSOR_PIN = 14
+DHT11_SENSOR_PIN = 18

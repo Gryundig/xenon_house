@@ -19,5 +19,8 @@ class MotionEventTarget(EventTarget):
     def begin(self):
         self.__motion_sensor.begin()
 
+    def end(self):
+        self.__motion_sensor.end()
+
     def __event_callback(self, motion):
         self._dispatch_event(MotionEvent(motion))

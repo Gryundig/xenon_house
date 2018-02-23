@@ -28,6 +28,8 @@ def main(args):
     except Exception as e:
         logger.exception(e)
         return 1
+    finally:
+        xenon_house.end()
 
 
 if __name__ == '__main__':

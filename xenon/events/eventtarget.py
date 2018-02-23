@@ -30,3 +30,6 @@ class EventTarget:
 
     def loop(self):
         pass
+
+    def end(self):
+        pass
