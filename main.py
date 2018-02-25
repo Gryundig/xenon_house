@@ -19,6 +19,7 @@ def main(args):
         if len(args) > 1:
             raise Exception("Invalid arguments passed")
         xenon_house = XenonHouse()
+        xenon_house.begin()
         while True:
             xenon_house.loop()
             time.sleep(const.TIMEOUT)

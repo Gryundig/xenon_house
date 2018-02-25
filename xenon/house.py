@@ -22,7 +22,6 @@ class XenonHouse:
         logger.info('XenonHouse initialization')
         self.__register_event_targets()
         self.__subscribe_to_events()
-        self.__begin()
 
     @staticmethod
     def __register_event_targets():
@@ -43,7 +42,7 @@ class XenonHouse:
         events_handler.add_event_listener(MINUTE_CHANGED_EVENT_ID, ifttt)
 
     @staticmethod
-    def __begin():
+    def begin():
         EventsHandler().begin()
 
     @staticmethod
